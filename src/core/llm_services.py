@@ -53,3 +53,4 @@ def auto_consistency(prompt: str, models: list, temperatures: list) -> str:
     final_answer = call_llm(consolidation_prompt, reasoning_model.model_name, 0.5)
     
     return final_answer
+

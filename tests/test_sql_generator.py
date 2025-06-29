@@ -10,3 +10,4 @@ SELECT * FROM tabela;
         result = generate_sql("obter dados", "Tabela: tabela (id INT)")
     assert result == "SELECT * FROM tabela;"
 
+
