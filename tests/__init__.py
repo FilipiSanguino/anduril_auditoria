@@ -9,6 +9,13 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..',
 if 'google.generativeai' not in sys.modules:
     google_module = ModuleType('google')
     generativeai_module = ModuleType('google.generativeai')
+    cloud_module = ModuleType('google.cloud')
+    storage_module = ModuleType('google.cloud.storage')
     sys.modules['google'] = google_module
     sys.modules['google.generativeai'] = generativeai_module
+    sys.modules['google.cloud'] = cloud_module
+    sys.modules['google.cloud.storage'] = storage_module
+
+
+
 

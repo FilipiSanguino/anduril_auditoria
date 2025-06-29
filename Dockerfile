@@ -1,21 +1,18 @@
-# Use the official Python image as the base image
+# Base image with Python
 FROM python:3.11-slim
 
-# Set the working directory in the container
+# Create working directory
 WORKDIR /app
 
-# Copy the requirements file into the container
-COPY requirements.txt .
-
-# Install the Python dependencies
+# Install dependencies
+COPY src/requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code into the container
-COPY . .
+# Copy application source
+COPY src/ .
 
-# Expose the port that the application will listen on
-ENV PORT 8080
+ENV PORT=8080
 EXPOSE $PORT
 
-# Run the application using Gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "main:app"]
+

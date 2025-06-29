@@ -1,3 +1,4 @@
+import os
 import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
@@ -5,7 +6,8 @@ from google.cloud import storage
 import pickle
 
 # Configurações
-BUCKET_NAME = "anduril-auditoria" # Substitua pelo nome do seu bucket
+# Nome do bucket usado para armazenar o indice FAISS
+BUCKET_NAME = os.getenv("GCS_BUCKET_NAME", "anduril-auditoria")
 INDEX_FILE_PATH = "vector_db/audit_docs.index"
 METADATA_FILE_PATH = "vector_db/audit_docs_meta.pkl"
 
@@ -78,3 +80,4 @@ def search_documents(query: str, top_k: int = 5, required_role: str = "auditoria
             results.append(metadata[i])
             
     return results
+
